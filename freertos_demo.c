@@ -50,7 +50,7 @@
 #define SSRL_TASK_PRIORITY 2
 #define TEMP_TASK_PRIORITY 3
 
-#define QUEUE_LENGTH 4
+#define QUEUE_LENGTH 4 //TODO sera que precisa ser alterado?
 #define TICKS_TO_WAIT 5
 
 #define BASE_ADDR 0x10000
@@ -123,7 +123,7 @@ void vApplicationTickHook(void)
 /********************************************************************************************
  * Flash Task description. It should receive BUFFER_SIZE values and then store it on Flash. *
  ********************************************************************************************/
-void vFlashTask(void *param) //TODO
+void vFlashTask(void *param)
 {
 	// Declare local variables
 	uint32_t v;						// Queue reader variable
@@ -168,7 +168,7 @@ void vFlashTask(void *param) //TODO
 /*********************************************************************************************
  * Serial Task description. It should receive BUFFER_SIZE values and then print it via UART. *
  *********************************************************************************************/
-void vSerialTask(void *param) //TODO
+void vSerialTask(void *param)
 {
 	// Declare local variables
 	uint32_t v;						// Queue reader variable
@@ -210,7 +210,7 @@ void vSerialTask(void *param) //TODO
 /***************************************************************************************************************
  * Temperature Task description. It should get temperature samples after each tick and send it to other tasks. *
  ***************************************************************************************************************/
-void vTemperatureTask(void *param) //TODO
+void vTemperatureTask(void *param)
 {
 	// Declare local variables
 	uint32_t i = 0;						// Counter variable
@@ -284,7 +284,6 @@ void vSwitchTask(void *param) //TODO analisar a possibilidade de ser necessario 
 
 	}
 }
-
 
 
 /***********************************************************
