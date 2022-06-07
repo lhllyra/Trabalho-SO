@@ -123,7 +123,7 @@ void vApplicationTickHook(void)
 /********************************************************************************************
  * Flash Task description. It should receive BUFFER_SIZE values and then store it on Flash. *
  ********************************************************************************************/
-void vFlashTask(void *param)
+void vFlashTask(void *param) //TODO
 {
 	// Declare local variables
 	uint32_t v;						// Queue reader variable
@@ -168,7 +168,7 @@ void vFlashTask(void *param)
 /*********************************************************************************************
  * Serial Task description. It should receive BUFFER_SIZE values and then print it via UART. *
  *********************************************************************************************/
-void vSerialTask(void *param)
+void vSerialTask(void *param) //TODO
 {
 	// Declare local variables
 	uint32_t v;						// Queue reader variable
@@ -210,7 +210,7 @@ void vSerialTask(void *param)
 /***************************************************************************************************************
  * Temperature Task description. It should get temperature samples after each tick and send it to other tasks. *
  ***************************************************************************************************************/
-void vTemperatureTask(void *param)
+void vTemperatureTask(void *param) //TODO
 {
 	// Declare local variables
 	uint32_t i = 0;						// Counter variable
@@ -270,6 +270,23 @@ void vTemperatureTask(void *param)
 	}
 }
 
+
+/********************************************************************************************
+ * SWITCH Task description. It should receive [...] values and then [...]. *
+ ********************************************************************************************/
+void vSwitchTask(void *param) //TODO analisar a possibilidade de ser necessario argumentos com identificador
+//de botao pressionado naquela call.
+{
+	//avaliar se o programa esta rodando normalmente
+	//true e o programa roda normalmente. SW1 surte efeito mas SW2 nao
+	//false e o comportamento contrário é esperado
+	if(programState.isRunning){ 
+
+	}
+}
+
+
+
 /***********************************************************
  * Initialize FreeRTOS and start the initial set of tasks. *
  ***********************************************************/
@@ -299,7 +316,8 @@ int main(void)
     		(tskIDLE_PRIORITY + SSRL_TASK_PRIORITY), NULL);
     xTaskCreate(vTemperatureTask, "TEMP_TASK", TASK_STACK_DEPTH, NULL,
     		(tskIDLE_PRIORITY + TEMP_TASK_PRIORITY), NULL);
-
+	xTaskCreate(vSwitchTask, "SWCH_TASK", TASK_STACK_DEPTH, NULL,
+    		(tskIDLE_PRIORITY + SWCH_TASK_PRIORITY), NULL);
     // Start the scheduler.  This should not return.
     // If it fails or something else, though, it will return.
     // So keep a loop running doing nothing
